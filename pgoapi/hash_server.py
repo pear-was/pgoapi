@@ -15,13 +15,13 @@ class HashServer(HashEngine):
     _session.mount('https://', _adapter)
     _session.verify = True
     _session.headers.update({'User-Agent': 'Python pgoapi @pogodev'})
-    endpoint = "https://pokehash.buddyauth.com/api/v157_5/hash"
+    endpoint = "http://hash.goman.io/api/v157_5/hash"
     status = {}
 
     def __init__(self, auth_token):
         if not auth_token:
             raise NoHashKeyException('Token not provided for hashing server.')
-        self.headers = {'content-type': 'application/json', 'Accept' : 'application/json', 'X-AuthToken' : auth_token}
+        self.headers = {'content-type': 'application/json', 'Accept' : 'application/json', 'X-AuthToken' : auth_token, 'X-MaxRPMCount' : '30000', 'X-RateLimit' : '2000'}
 
     def hash(self, timestamp, latitude, longitude, accuracy, authticket, sessiondata, requestslist):
         self.location_hash = None
