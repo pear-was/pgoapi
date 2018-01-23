@@ -15,7 +15,7 @@ class HashServer(HashEngine):
     _session.mount('https://', _adapter)
     _session.verify = True
     _session.headers.update({'User-Agent': 'Python pgoapi @pogodev'})
-    endpoint = "http://hash.goman.io/api/v157_5/hash"
+    endpoint = "http://hash.goman.io/api/v159_1/hash"
     status = {}
 
     def __init__(self, auth_token):
